@@ -1,11 +1,17 @@
-import React from 'react'; 
+import React ,{useState , useEffect} from 'react'; 
 import {BrowserRouter ,Route , Routes } from "react-router-dom" 
 import Posts from './screens/Posts'; 
-import PostDetails from './screens/PostDetails';
+import PostDetails from './screens/PostDetails'; 
+
+ 
+
+
+ 
+const App = () =>{   
 
 
 
-const App = () =>{
+
   return ( 
       <BrowserRouter> 
          <Routes> 
