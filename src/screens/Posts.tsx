@@ -8,13 +8,13 @@ const Posts : React.FC = ()=>{
 
     const [allpost , setAllpost] = useState<Postdata[] | null>(null) 
 
-    const [nombrepost , setNombrepost] = useState<number>(5)    
+    const [nombrepost , setNombrepost] = useState<number>(30)    
 
-    const url =  ` https://jsonplaceholder.typicode.com/posts?_limit=${nombrepost}   ` 
+    const url =  ` https://jsonplaceholder.typicode.com/posts?_limit=${localStorage.getItem("nombre")||nombrepost}   ` 
     
     useEffect(()=>{
         getAllpost()
-    },[nombrepost])
+    },[localStorage.getItem("nombre")||nombrepost])
 
     const getAllpost =() =>{
         axios.get(url)
@@ -30,7 +30,8 @@ const Posts : React.FC = ()=>{
     }  
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>)=>{ 
-        setNombrepost(+e.target.value)
+        setNombrepost(+e.target.value) 
+        localStorage.setItem("nombre",e.target.value)
     } 
 
   //  console.log(nombrepost)
@@ -38,8 +39,8 @@ const Posts : React.FC = ()=>{
  return( 
     
       <div > 
-               <label htmlFor="customRange1" className="form-label"><h2>Nombre de Posts : {nombrepost}</h2></label>
-                <input type="range" min="0" max="30" className="form-range" id="customRange1" onChange={handleChange}/>
+               <label htmlFor="customRange1" className="form-label"><h2>Nombre de Posts : {localStorage.getItem("nombre")||nombrepost}</h2></label>
+                <input type="range" min="0" max="30" className="form-range" id="customRange1" defaultValue={localStorage.getItem("nombre")||nombrepost} onChange={handleChange}/>
             <Postlist allpost = {allpost} />
      </div>
  )  
