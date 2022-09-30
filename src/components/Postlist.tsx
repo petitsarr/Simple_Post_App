@@ -1,24 +1,22 @@
-import React from "react"  
+import React from "react"   
+import  {useNavigate} from "react-router-dom"
 import hasPostlist from "../interfaces/haspostlist"
-
+ 
 const Postlist :React.FC<hasPostlist> = ({allpost})=>{    
 
-    
+    let navigate = useNavigate()
 
 
     return(
-        <div className="card container" >
+        <div className="card" style={{display : "flex" , flexDirection : "row"  ,flexWrap :"wrap" ,justifyContent:"space-between" ,alignItems :"center" }} >
        {
         allpost?.map((p)=>{
             return( 
-               <div className="row"> 
-                    <div className="card-body col col-sm-6 col-md-3 col-xl-4" key={p.id} style={{width: "30rem" , margin:10}}>
+                <div className="card-body" key={p.id} style={{width: "30rem" , margin:10 , border :"2px solid grey" ,borderRadius :5}}>
                   <h5 className="card-title">{p.title}</h5>
                   <p className="card-text"> {p.body} </p>
-                  <a href="#" className="btn btn-primary">Go somewhere</a>
+                  <button onClick={()=> navigate(`/${p.id}` ,{state : {data : p}} )} className="btn btn-primary">Details</button>
                 </div>
-
-               </div>
             )
         })
        }
