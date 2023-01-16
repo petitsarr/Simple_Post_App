@@ -8,4 +8,4 @@ interface Postdata {
 }  
 
 
-export default Postdata
+export default Postdata ;

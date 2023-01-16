@@ -7,21 +7,18 @@ import PostDetails from './screens/PostDetails';
 
 
  
-const App = () =>{   
-
-
-
+const App = () => {   
 
   return ( 
-      <BrowserRouter> 
-         <Routes> 
-          <Route  path='/'  element={<Posts/>}  />  
+          <BrowserRouter> 
+                    <Routes> 
+                            <Route  path='/'  element={<Posts/>}  />  
 
-          <Route path=':id' element={<PostDetails/>} />
+                            <Route path=':id' element={<PostDetails/>} />
 
-         </Routes>
+                    </Routes>
 
-      </BrowserRouter>
+          </BrowserRouter>
   )
 }
 
